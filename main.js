@@ -16,5 +16,25 @@ function moveTarget() {
   target.style.top = `${randomY}px`;
 }
 
+gameArea.addEventListener('contextmenu', function(event) {
+  event.preventDefault();
+});
+
 // Initial target position
 moveTarget();
+
+target.addEventListener('contextmenu', function(event){
+  event.preventDefault(); 
+  score++;
+  scoreBoard.textContent = `Score: ${score}`;
+  moveTarget();
+});
+
+document.addEventListener('keydown', function(event) {
+  if (event.ctrlKey && event.key === 'p') {
+    score = 0;
+    scoreBoard.textContent = `Score: ${score}`;
+    event.preventDefault();
+  }
+});
+
